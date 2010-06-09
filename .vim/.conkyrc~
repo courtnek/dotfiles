@@ -1,0 +1,9 @@
+background no
+out_to_console yes
+update_interval 2
+total_run_times 0
+use_spacer none
+
+TEXT
+$mpd_smart :: ${cpu cpu1}% ${loadavg 1} :: ${acpitemp}c :: $memperc% ($mem) :: ${downspeed eth1}/s ${upspeed eth1}/s :: ${time %a %b %d %I:%M%P}
+

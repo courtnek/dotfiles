@@ -1,0 +1,45 @@
+! -------------------------------------------------
+! file:     ~/.Xdefaults                           
+! -------------------------------------------------
+
+! Urxvt
+URxvt.buffered: true
+URxvt.background: #1A1A1A
+URxvt.foreground: #999999
+URxvt.cursorColor: #5E468C
+URxvt.cursorBlink: true
+URxvt.geometry: 80x30
+URxvt.transparent: 0
+URxvt.title: Urxvt
+
+! -- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hinstyle:   hintslight
+
+! borderless and no scrollbar
+URxvt*scrollBar_right: false
+URxvt*scrollBar: false
+URxvt*borderLess: false
+
+! teh transparency stuff
+URxvt*inheritPixmap: false
+URxvt*tintColor: #1A1A1A
+URxvt*shading: 0
+
+! -- Fonts -- !
+URxvt.font:xft:envy code r:medium:pixelsize=12
+URxvt.boldFont:xft:envy code r:medium:pixelsize=12
+!URxvt.font:xft:inconsolata:bold:pixelsize=12
+!URxvt.font:     -*-dina-medium-r-*-*-*-80-*-*-*-*-*-*
+!URxvt.boldFont: -*-dina-medium-r-*-*-*-80-*-*-*-*-*-*
+!URxvt.font:     -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-terminus-medium-r-*-*-16*-*-*-*-*
+
+! -- Colours -- !
+#include "/home/courtnek/.colours/dark"
+!#include "/home/courtnek/.colours/milomouse"
+!#include "/home/courtnek/.colours/zenburn"
+
