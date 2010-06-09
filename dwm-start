@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Simple file to reload dwm without losing windows
+
 while true; do 
 dwm > /dev/null;  done;
 

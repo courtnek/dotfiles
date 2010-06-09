@@ -1,13 +1,12 @@
 # -------------------------------------------------
 # file:     ~/.xinitrc
-# author:   Kailean Courtney + Jason Ryan 
 # -------------------------------------------------
 
 #!/bin/sh
 
 # enable restart X
 setxkbmap -option terminate:ctrl_alt_bksp &
-# disable CapsLock & map to Escape
+# disable CapsLock & map to Escape (could be useful someday)
 #setxkbmap -option caps:escape &
 
 # set wallpaper
