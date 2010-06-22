@@ -1,0 +1,1 @@
+/home/courtnek/Build/dwm/dwm-5.8.2-2/config.h
