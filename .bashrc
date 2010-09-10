@@ -117,10 +117,14 @@ alias posts="python ~/Scripts/postsperday.py 25579"
 # Lock screensaver
 alias lock="xscreensaver-command -lock"
 
+# Network
+alias tamup="sudo netcfg tamulink"
+alias tamud="sudo netcfg -d tamulink"
+
 ######## Pacman ########
 ########################
 # Colourized output
-alias pacman="pacman-color"
+#alias pacman="pacman-color"
 
 # Lets you search through all available packages simply using 'pacsearch packagename'
 alias pacsearch="pacman -Sl | cut -d' ' -f2 | grep "
@@ -152,7 +156,7 @@ pacsearch() {
 }
 
 # Alias for pacman-color
-alias pacman="sudo pacman-color"
+#alias pacman="sudo pacman-color"
 
 # Mount options #############
 ############################# 
