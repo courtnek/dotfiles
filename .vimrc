@@ -2,8 +2,6 @@
 " file:     ~/.vimrc                         
 "---------------------------------------------------------------
 
-"Keep it simple until i feel ready to become a vim guru :-)
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -25,4 +23,4 @@ set cindent       " stricter rules for C programs
 syntax on
 filetype plugin on
 
-colorscheme miromiro
+colorscheme zenburn

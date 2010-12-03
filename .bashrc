@@ -30,7 +30,7 @@ set_prompt_style () {
     SYMBOL="#"
   fi
 
-  PS1="┌─[\[\e[36m\]\h\[\e[0m\]][\[\e[1;32m\]\w\[\e[0m\]]\n└─╼ "
+  PS1="[\[\e[36m\]\h\[\e[0m\]][\[\e[1;32m\]\w\[\e[0m\]]"
 
 }
 set_prompt_style
@@ -118,8 +118,11 @@ alias posts="python ~/Scripts/postsperday.py 25579"
 alias lock="xscreensaver-command -lock"
 
 # Network
+alias hnetu="sudo netcfg home-network"
+alias hnetd="sudo netcfg -d home-network"
 alias tamup="sudo netcfg tamulink"
 alias tamud="sudo netcfg -d tamulink"
+alias drpbx="killall dropbox && dropboxd&"
 
 ######## Pacman ########
 ########################
