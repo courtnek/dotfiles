@@ -14,7 +14,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "X", "Y", "Z", "P" , "Q" };
+static const char *tags[] = { "1", "2" , "3" , "4" , "5" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -47,16 +47,22 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char   *termcmd[] = { "urxvtc", NULL };
-static const char  *xtermcmd[] = { "xterm",  NULL };
-static const char    *webcmd[] = { "chromium", NULL };
-static const char *rebootcmd[] = { "sudo", "shutdown", "-r", "now",  NULL };
-static const char   *quitcmd[] = { "sudo", "shutdown", "-h", "now",  NULL };
-static const char   *lockcmd[] = { "xscreensaver-command", "--lock", NULL };
+static const char   *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char    *termcmd[] = { "urxvtc", NULL };
+static const char   *xtermcmd[] = { "xterm",  NULL };
+static const char     *webcmd[] = { "chromium", NULL };
+static const char  *rebootcmd[] = { "sudo", "shutdown", "-r", "now",  NULL };
+static const char    *quitcmd[] = { "sudo", "shutdown", "-h", "now",  NULL };
+static const char    *lockcmd[] = { "xscreensaver-command", "--lock", NULL };
+static const char    *mutecmd[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char   *volupcmd[] = { "amixer", "-q", "sset", "Master", "3+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "sset", "Master", "3-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+    { 0,                       0x1008ff11,     spawn,          {.v = voldowncmd } },
+    { 0,                       0x1008ff13,     spawn,          {.v = volupcmd } },
+    { 0,                       0x1008ff12,     spawn,          {.v = mutecmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { ControlMask|Mod1Mask,         XK_x,      spawn,          {.v = xtermcmd } },
