@@ -1,13 +1,9 @@
-#-------------------------------------------------
-# file:     ~/.conkyrc
-# -------------------------------------------------
-
 background no
 out_to_console yes
-update_interval 2
+update_interval 1
 total_run_times 0
 use_spacer none
 
 TEXT
-$mpd_smart :: ${cpu cpu1}% ${loadavg 1} :: ${acpitemp}c :: $memperc% ($mem) :: ${downspeed wlan0}/s ${upspeed wlan0}/s :: ${time %a %b %d %I:%M%P}
+: ${downspeed wlan0}/s ${upspeed wlan0}/s : ${loadavg 1} : ${mixerbar} : $memperc% ($mem) : $battery_percent% : ${time %a %b %d %I:%M%P}
 
