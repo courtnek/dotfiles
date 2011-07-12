@@ -1,0 +1,1 @@
+/home/courtnek/dotfiles/Build/dwm/dwm-5.9.0-1/config.h
