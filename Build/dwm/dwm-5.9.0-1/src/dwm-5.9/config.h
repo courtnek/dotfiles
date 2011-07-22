@@ -54,9 +54,9 @@ static const char     *webcmd[] = { "chromium", NULL };
 static const char  *rebootcmd[] = { "sudo", "shutdown", "-r", "now",  NULL };
 static const char    *quitcmd[] = { "sudo", "shutdown", "-h", "now",  NULL };
 static const char    *lockcmd[] = { "xscreensaver-command", "--lock", NULL };
-static const char    *mutecmd[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
-static const char   *volupcmd[] = { "amixer", "-q", "sset", "Master", "3+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "sset", "Master", "3-", "unmute", NULL };
+static const char    *mutecmd[] = { "amixer", "-c", "1", "-q", "sset", "Master", "toggle", NULL };
+static const char   *volupcmd[] = { "amixer", "-c", "1", "-q", "sset", "Master", "3+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-c", "1", "-q", "sset", "Master", "3-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
