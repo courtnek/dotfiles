@@ -1,5 +1,13 @@
-###############
-# README ######
-###############
+#### Dotfiles
 
-This is just a placeholder to squelch the banner on GitHub. I think the purpose of these files is really obvious.
+"Dotfiles are love. Dotfiles are life" --Unknown
+
+# Current configurations
+* vim
+* tmux
+
+# Soon^(TM)
+* zsh
+* jscs jshint
+* powerline
+* git
