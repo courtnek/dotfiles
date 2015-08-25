@@ -1,0 +1,412 @@
+" Kailean Courtney
+" Vundle Setup {{{
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+
+    " let Vundle manage Vundle
+    " required! 
+    Bundle 'gmarik/vundle'
+
+    " My Bundles here:
+    " General Usability
+    Bundle 'Gundo'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'tpope/vim-unimpaired'
+    Bundle 'mbbill/undotree'
+    Bundle 'matchit.zip'
+    Bundle 'godlygeek/tabular'
+    Bundle 'junegunn/vim-easy-align'
+    Bundle 'AutoComplPop'
+    Bundle 'Lokaltog/vim-easymotion'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'gregsexton/MatchTag'
+    Bundle 'takac/vim-hardtime'
+    Bundle 'terryma/vim-multiple-cursors'
+
+    " Organization
+    Bundle 'christoomey/vim-tmux-navigator'
+
+    " Notes
+    Bundle 'fmoralesc/vim-pad'
+
+    " Looks
+    Bundle 'nicwest/rainbow_parentheses.vim'
+
+    " Colors
+    "Bundle 'altercation/vim-colors-solarized'
+    "Bundle 'ajh17/Spacegray.vim'
+    "Bundle 'jnurmine/Zenburn'
+    "Bundle 'tomasr/molokai'
+    Bundle 'chriskempson/base16-vim'
+
+    " C++ Usability
+    Bundle 'OmniCppComplete'
+
+    " Javascript
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'marijnh/tern_for_vim'
+
+    " VCS Management
+    Bundle 'airblade/vim-gitgutter'
+    Bundle 'tpope/vim-fugitive'
+
+    call vundle#end()
+    filetype plugin indent on
+" }}}
+" }}}
+" Colors {{{
+    " enable 256 colors
+    set t_Co=256            
+    " and for base16 as well
+    let base16colorspace=256            
+    " enable syntax processing
+    syntax enable           
+
+    " Pick our colorscheme
+    set background=dark
+    colorscheme base16-monokai
+
+    " Disable tasting invisible parts of the paren rainbow
+    let g:rbpt_disabled_colors = ['black', 'brown']
+" }}}
+" Misc {{{
+    " faster redraw
+    set ttyfast                     
+    " Allow backspacing over autoindent, line breaks, and start of insert action.
+    set backspace=indent,eol,start  
+
+    " Configure Vim to remember certain information between instances.
+    " '10 : Marks will be remembered for up to 10 previously edited files.
+    " "100 : Save up to 100 lines for each register.
+    " :20 : Save up to 20 lines of command-line history.
+    " % : Save and restore the buffer list.
+    " n... : Location to save the viminfo files.
+    set viminfo='10,\"100,:20,%,n~/.vim/viminfo
+
+    " Set the default language to use for spell checking.
+    setlocal spell spelllang=en_us
+
+    " Set an environment variable to indicate a vim shell
+    let $PS1 .= '[VS]'
+" }}}
+" Spaces & Tabs {{{
+    set tabstop=4           " 4 space tab
+    set expandtab           " use spaces for tabs
+    set softtabstop=4       " 4 space tab
+    set shiftwidth=4
+    set modeline
+    set modelines=1
+    filetype indent on
+    set autoindent
+    " tab infront of a line inserts blanks according to shiftwidth
+    set smarttab
+    " Copy the structure of the existing lines indent when autoindenting a new line.
+    set copyindent
+" }}}
+" UI Layout {{{
+    set number              " show line numbers
+    set showcmd             " show command in bottom bar
+    set cursorline          " highlight current line
+    set wildmenu
+    set nolazyredraw
+    set showmatch           " higlight matching parenthesis
+    set linebreak           " try not to split words across lines
+        
+
+    " Instead of failing a command because of unsaved changes raise a dialogue asking if you wish to save changed files.
+    set confirm
+
+    " Enable special display options to show tabs and end-of-line characters within a non-GUI window. Tabs are represented using '>-' and  a sequence of '-'s that will fill out to match the proper width of a tab. End-of-line is represented by a dollar sign '$'. Displaying  tabs as '>-' and end-of-lines as '$'. Trailing white space is represented by '~'. Must be toggled by a mapping to ':set list!'.
+    set listchars=tab:>-,eol:$,trail:~,extends:>,precedes:<
+" }}}
+" Status Line {{{
+    " Always display the status line, even if only one window is displayed.
+    set laststatus=2
+    set noshowmode
+
+    " Format the status line.
+    set statusline=%F           " Full path of the file.
+    set statusline+=\ %m        " Display [+] if the current buffer has been modified.
+    set statusline+=\ %r        " Show [RO] for read-only files.
+    set statusline+=%=          " Right align the following status line text.
+    " set statusline+=\ %{fugitive#statusline()}  " Fugitive plugin for pulling in Git repo information.
+    set statusline+=\ %y        " File type, such as [cpp] or [bash].
+    set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " File encoding, such as [utf-8] or [latin1].
+    set statusline+=\ [%{strlen(&ff)?&ff:'unknown'}]    " File format, such as [unix] or [dos].
+    set statusline+=\ [Column:\ %3v]    " Virtual column number that is independent of the total byte count of all characters up to that   point. Padd with up to 3 invisible characters.
+    set statusline+=\ [Line:\ %4l\/%L]  " Current line number out of '%L' lines in the current buffer. Pass with up to 4 invisible         characters.
+" }}}
+" Searching {{{
+    set ignorecase          " ignore case when searching
+    set incsearch           " search as characters are entered
+    set hlsearch            " highlight all matches
+    set smartcase           " Enable case-sensitive search when the search phrase contains capital letters.
+" }}}
+" Folding {{{
+    set foldmethod     = indent " fold based on indent level
+    set foldnestmax    = 10     " max 10 depth
+    set foldlevelstart = 10     " start with fold level of 1
+    set foldenable              " don't fold files by default on open
+    nnoremap <space> za
+" }}}
+" Movement Shortcuts {{{
+    " All aboard the pain train
+    let g:hardtime_default_on = 0
+    let g:hardtime_allow_different_key = 1
+    let g:hardtime_showmsg = 1
+
+    " Move over lines visually
+    nnoremap j gj
+    nnoremap k gk
+    " Highlight last inserted text
+    nnoremap gV `[v`]
+
+    " Smart way to move btw. windows
+    map <C-j> <C-W>j
+    map <C-k> <C-W>k
+    map <C-h> <C-W>h
+    map <C-l> <C-W>l
+" }}}
+" Leader Shortcuts {{{
+    " Set up a custom leader
+    let mapleader=" "
+    nnoremap <leader>i :set list!<CR>
+    nnoremap <leader>m :silent make\|redraw!\|cw<CR>
+    nnoremap <leader>u :GundoToggle<CR>
+    nnoremap <leader>h :HardTimeToggle<CR>
+    nnoremap <leader>ev :vsp $MYVIMRC<CR>
+    nnoremap <leader>sv :source $MYVIMRC<CR>
+    nnoremap <leader>l :call ToggleNumber()<CR>
+    nnoremap <leader><space> :noh<CR>
+    nnoremap <leader>s :mksession<CR>
+    nnoremap <leader>a :Ag 
+    nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+    nnoremap <leader>1 :set number!<CR>
+    nnoremap <leader>d :Make! 
+    inoremap jk <esc>
+
+    " Shared yank defs
+    let g:session_yank_file="~/.vim_yank"
+    map <silent> <Leader>y :call Session_yank()<CR>
+    vmap <silent> <Leader>y y:call Session_yank()<CR>
+    vmap <silent> <Leader>Y Y:call Session_yank()<CR>
+    nmap <silent> <Leader>p :call Session_paste("p")<CR>
+    nmap <silent> <Leader>P :call Session_paste("P")<CR>
+" }}}
+" Language Tools {{{
+    " Turn on concealment for .JS
+    let g:javascript_conceal=1
+
+    " Automatically insert header guards into new C++ header files.
+    autocmd BufNewFile *.{h,hpp} call <SID>insert_header_guard()
+" }}}
+" OmniComplete {{{
+    " Setup Omni Complete Plugin and Other Language Tools
+    " Setup for Omni Completion to facilitate auto-completion support and to further configure language-specific helper tools.
+
+    " Configure the auto-complete pop-up menu to automatically open and close.
+    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+    " Configure pop-up menu to auto-select based on order of options.
+    set completeopt=menuone,menu,longest,preview
+
+    " Set the default tag file to equal the name of the file that is generated as a result of the UpdateTags() function. If a tag file not exist within the directory containing the file that is being edited by Vim then it is simply not used. No negative effects occur.
+    if has('win32')
+        set tags+=./tags
+    elseif has('unix')
+        set tags+=./tags
+    endif
+
+    " Use binary search to search a tags file for matching patterns. Assumes the tags file was sorted on ASCII byte value. If no match is found during an initial search, Vim will switch to a linear search and re-scan the tags file. OPTIMIZATION: Requires tags files to be sorted by Ctags using the 'foldcase' option and requires Vim to have 'ignorecase' option set. Optimization will insure all matching tags are found, while still supporting binary search. See ":help tagbsearch".
+    set tagbsearch
+
+    " Enable a Vim option to remember which tags were jumped to, and from where. The tagstack list shows the tags that were jumped to and the cursor position right before the jump.
+    set tagstack
+
+    " GENERIC LANGUAGE SUPPORT
+
+    " Enable default auto complete support in Vim. Will force Vim to select the appropriate auto complete tool based on filetype.
+    set omnifunc=syntaxcomplete#Complete
+
+    " C SUPPORT.
+
+    " Enable C Omni Complete on C source and header files.
+    if version >= 700
+        autocmd FileType c set omnifunc=ccomplete#Complete " Default Omni Complete line for enabling Omni Complete for C files.
+    endif
+
+    " C++ SUPPORT.
+
+    " Enable C++ Omni Complete on C++ source and header files.
+    if version >= 700
+        autocmd FileType cpp set omnifunc=omni#cpp#complete#Main " Override built-in C Omni Complete with C++ OmniCppComplete plugin.
+        " autocmd BufNewFile,BufRead,BufEnter *.cpp,*.hpp " A possible improvement is to use the proceeding line in which the file extensions are specified. It may be required to get Vim to recognize files that have usual extensions.
+        let OmniCpp_GlobalScopeSearch = 1 " Search for functions starting from the global scope and narrowing down from there.
+        let OmniCpp_NamespaceSearch = 1 " Search for functions within the current file and all included files.
+        let OmniCpp_ShowAccess = 1 " Show access modifier (private(-), public(#), or protected(#)).
+        let OmniCpp_DisplayMode = 1 " Show all members: static, public, protected, and private.
+        let OmniCpp_ShowScopeInAbbr = 1 " Show namespace, such as the class, that defines the function.
+        let OmniCpp_ShowPrototypeInAbbr = 1 " Show prototype (argument types).
+        let OmniCpp_MayCompleteDot = 1 " Autocomplete after .
+        let OmniCpp_MayCompleteArrow = 1 " Autocomplete after ->
+        let OmniCpp_MayCompleteScope = 1 " Autocomplete after ::
+        let OmniCpp_SelectFirstItem = 2 " Select first item within the pop-up menu. (1 = Insert option into text, 2 = Select but don't insert into text)
+        let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"] " Omni Complete will include the following namespaces by default, without first requiring the namespaces to be specified.
+        set completeopt=menuone,menu,longest
+    endif
+
+    " List OmniCppComplete tag database files.
+    if has('unix')
+        set tags+=~/.vim/tags/stl " STL C++ tag database file.
+        set tags+=~/.vim/tags/online-devel " What mysterious magic could tags appear here I wonder...
+    endif
+" }}}
+" Syntastic Setup {{{
+    " Run all checkers and aggrigate errors
+    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_check_on_open=1
+
+    " JS
+    let g:syntastic_javascript_checkers=['jshint', 'jscs']
+
+    " CXX
+    let g:syntastic_cpp_checkers = [ 'cpplint' ]
+    let g:syntastic_cpp_cpplint_args = " --extensions cxx,h"
+" }}}
+" Rainbow Parentheses {{{
+    autocmd VimEnter * RainbowParenthesesActivate
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+" }}}
+" ctrlp {{{
+    " Nearest ancestor only if working directory is an ancestor of current file
+    let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_root_markers = [ 'Gruntfile.js', 'gulpfile.js' ]
+    " ignore the bin directory
+    let g:ctrlp_custom_ignore = {
+        \ 'dir' : 'bin$\|\.git$\|node_modules$',
+        \}
+
+" }}}
+" Vim pad {{{
+    let g:pad#dir = "~/vim-notes/"
+" }}}
+" Easy Align {{{
+    " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+    vmap <Enter> <Plug>(EasyAlign)
+
+    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    nmap ga <Plug>(EasyAlign)
+" }}}
+" Tmux {{{
+    " allows cursor change in tmux mode
+    if exists('$TMUX') 
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
+" }}}
+" AutoGroups {{{
+    augroup configgroup
+        autocmd!
+        autocmd VimEnter * highlight clear SignColumn
+        autocmd BufWritePre *.cxx,*.h,*.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb,*.html,*.css :call <SID>StripTrailingWhitespaces()
+        autocmd BufEnter *.cls setlocal filetype=java
+        autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+        autocmd BufEnter Makefile setlocal noexpandtab
+        autocmd BufEnter *.sh setlocal tabstop=2
+        autocmd BufEnter *.sh setlocal shiftwidth=2
+        autocmd BufEnter *.sh setlocal softtabstop=2
+    augroup END
+" }}}
+" Backups {{{
+    set backup 
+    set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+    set backupskip=/tmp/*,/private/tmp/* 
+    set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+    set writebackup
+" }}}
+" Custom Functions {{{
+    function! Session_yank()
+        new
+        call setline(1,getregtype())
+        put
+        silent exec 'wq! ' . g:session_yank_file
+        exec 'bdelete ' . g:session_yank_file
+    endfunction
+
+    function! Session_paste(command)
+        silent exec 'sview ' . g:session_yank_file
+        let l:opt=getline(1)
+        silent 2,$yank
+        if (l:opt == 'v')
+            call setreg('"', strpart(@",0,strlen(@")-1), l:opt) " strip trailing endline ?
+        else
+            call setreg('"', @", l:opt)
+        endif
+        exec 'bdelete ' . g:session_yank_file
+        exec 'normal ' . a:command
+    endfunction
+
+    function! ToggleNumber()
+        if(&relativenumber == 1)
+            set norelativenumber
+            set number
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    function! s:insert_header_guard()
+        let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+        execute "normal! i#ifndef " . gatename
+        execute "normal! o#define " . gatename
+        execute "normal! Go#endif"
+        normal! kk
+    endfunction
+
+    " strips trailing whitespace at the end of files. this
+    " is called on buffer write in the autogroup above.
+    function! <SID>StripTrailingWhitespaces()
+        " save last search & cursor position
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        %s/\s\+$//e
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+
+    function! <SID>CleanFile()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " Do the business:
+        %!git stripspace
+        " Clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+
+    " Ignore CamelCase words when spell checking
+    function! IgnoreCamelCaseSpell()
+        syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+        syn cluster Spell add=CamelCase
+    endfun
+    autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+" }}}
+" Powerline Setup {{{
+    python from powerline.vim import setup as powerline_setup
+    python powerline_setup()
+    python del powerline_setup
+" }}}
+" vim: foldmethod=marker:foldlevel=0
+
