@@ -1,12 +1,12 @@
-#### Dotfiles
+# Dotfiles
 
 "Dotfiles are love. Dotfiles are life" --Unknown
 
-# Current configurations
+## Current configurations
 * vim
 * tmux
 
-# Soon^(TM)
+## Soon^(TM)
 * zsh
 * jscs jshint
 * powerline
