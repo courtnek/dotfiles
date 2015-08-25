@@ -1,9 +1,0 @@
-background no
-out_to_console yes
-update_interval 1
-total_run_times 0
-use_spacer none
-
-TEXT
-: ${downspeed wlan0}/s ${upspeed wlan0}/s : ${loadavg 1} : ${mixerbar} : $memperc% ($mem) : $battery_percent% : ${time %a %b %d %I:%M%P}
-
