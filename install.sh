@@ -15,6 +15,7 @@ fi
 
 echo "Initialize vim"
 mkdir -p ~/.vim-tmp
+vim +PluginInstall +qall
 
 
 echo "Done."
